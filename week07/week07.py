@@ -28,17 +28,18 @@ class Animal(metaclass=ABCMeta):
 
 class Cat(Animal):
     #属性：名字，叫声，是否适合作为宠物
-    def __init__(self, name='', yell='True', pet='True'):
+    def __init__(self, name='', yell='True', pet='True',somatotype=40, genre='raptatorial', personality='ferocity'):
         self.name = name
         self.yell = yell
         self.pet = pet
-        super().__init__(somatotype=40, genre='raptatorial', personality='ferocity')
+        super().__init__(somatotype=somatotype, genre=genre, personality=personality)
 
 if __name__ == '__main__':
     # a = Animal() 不能实例化，否则报错"TypeError: Can't instantiate abstract class Animal with abstract methods __init__"
     z = Zoo('beijing')
     c = Cat('苏拉','True','True')
-    d = Cat('丁丁','True','True')  
+    d = Cat('丁丁','True','True') 
+    e = Cat('花花','True','True',somatotype=90, genre='Rhombozoa', personality='docile')
     print(f'猫的名字：{c.name}，是否属于凶猛动物：{c.ferocious}') 
     print(f'猫的体型分值：{c.somatotype}') 
     z.add_animal(c)
