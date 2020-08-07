@@ -3,10 +3,11 @@ class Zoo:
     #属性：名字
     def __init__(self, name=''):
         self.name = name
+        self.animal_list = []
     #添加动物方法：同一个动物实例不能被重复添加
     def add_animal(self, animal_name):
-        if animal_name not in animal_list:
-            animal_list.append(animal_name)
+        if animal_name not in self.animal_list:
+            self.animal_list.append(animal_name)
         else:
             print('动物园已存在该实例')    
 
@@ -34,7 +35,6 @@ class Cat(Animal):
         super().__init__(somatotype=40, genre='raptatorial', personality='ferocity')
 
 if __name__ == '__main__':
-    animal_list=[]
     # a = Animal() 不能实例化，否则报错"TypeError: Can't instantiate abstract class Animal with abstract methods __init__"
     z = Zoo('beijing')
     c = Cat('苏拉','True','True')
