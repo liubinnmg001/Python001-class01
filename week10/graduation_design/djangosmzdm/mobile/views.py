@@ -5,6 +5,10 @@ from .models import Mobile
 def mobile_short(request):
     ###  从models取数据传给template  ###
     shorts = Mobile.objects.all()
+    search_key = request.GET.get('search_input')
+    if search_key:
+        condtions = {"comment__contains": search_key}
+        shorts = shorts.filter(**condtions)
     # 评论数量
     counter = Mobile.objects.all().count()
 
@@ -22,4 +26,3 @@ def mobile_short(request):
     minus = queryset.filter(**condtions).count()
 
     return render(request, 'result.html', locals())
-
